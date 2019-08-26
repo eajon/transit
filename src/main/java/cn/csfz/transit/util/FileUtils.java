@@ -4,6 +4,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author eajon
+ *
+ */
+
 public class FileUtils {
 
     public static String  makeTimeDir(String prefix)

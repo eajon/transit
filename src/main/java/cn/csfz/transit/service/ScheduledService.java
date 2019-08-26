@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-
+/**
+ * @author eajon
+ */
 @Component
 public class ScheduledService {
 
@@ -46,6 +46,7 @@ public class ScheduledService {
     public void scheduledConnect() throws IOException, WebSocketException {
         if (!webSocketClient.isConnected()) {
             webSocketClient.connect();
+
         }
 
     }

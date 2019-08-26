@@ -9,6 +9,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * @author eajon
+ */
 @Component
 public class WebSocketClient {
 

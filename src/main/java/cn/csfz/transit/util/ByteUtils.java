@@ -7,10 +7,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 
+/**
+ * @author eajon
+ *
+ */
+
 public class ByteUtils {
 
 
-    //Since JDK 7, NIO
+    /**
+     * Nio write
+     */
     public static void writeBytesToFileNio(byte[] bFile, String fileDest) {
 
         try {
