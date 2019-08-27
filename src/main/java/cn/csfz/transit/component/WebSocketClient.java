@@ -1,8 +1,8 @@
 package cn.csfz.transit.component;
 
 import cn.csfz.transit.util.ByteUtils;
-import cn.csfz.transit.util.PropertyUtil;
 import com.neovisionaries.ws.client.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -14,6 +14,15 @@ import java.util.*;
  */
 @Component
 public class WebSocketClient {
+
+    @Value("${transit.id}")
+    private String id;
+
+    @Value("${transit.server}")
+    private String server;
+
+    @Value("${transit.outbox}")
+    private String outbox;
 
     private WebSocket webSocket;
 
@@ -32,7 +41,7 @@ public class WebSocketClient {
     }
 
     public void connect() throws IOException, WebSocketException {
-        webSocket = webSocketFactory.createSocket(PropertyUtil.getProperty("transit.server") + "?id=" + PropertyUtil.getProperty("transit.id"), 5000);
+        webSocket = webSocketFactory.createSocket(server + "?id=" + id, 5000);
         webSocket.addListener(new WebSocketAdapter() {
             @Override
             public void onConnected(WebSocket websocket, Map<String, List<String>> headers) throws Exception {
@@ -47,7 +56,7 @@ public class WebSocketClient {
                 String time = simpleDateFormat.format(new Date());
                 String uuid = UUID.randomUUID().toString();
                 String filename = time + "_" + uuid;
-                ByteUtils.writeBytesToFileNio(binary, PropertyUtil.getProperty("transit.outbox") + filename + ".xml");
+                ByteUtils.writeBytesToFileNio(binary, outbox + filename + ".xml");
 
             }
 
