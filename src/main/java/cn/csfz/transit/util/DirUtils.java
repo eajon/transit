@@ -9,7 +9,7 @@ import java.util.Date;
  *
  */
 
-public class FileUtils {
+public class DirUtils {
 
     public static String  makeTimeDir(String prefix)
     {

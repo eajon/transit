@@ -3,7 +3,7 @@ package cn.csfz.transit.service;
 
 import cn.csfz.transit.component.WebSocketClient;
 import cn.csfz.transit.util.ByteUtils;
-import cn.csfz.transit.util.FileUtils;
+import cn.csfz.transit.util.DirUtils;
 import com.neovisionaries.ws.client.WebSocketException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -34,7 +34,7 @@ public class ScheduledService {
                 if (file.length() > 0) {
                     byte[] bytes = ByteUtils.readBytesFromFileNio(file);
                     webSocketClient.sendMessage(bytes);
-                    ByteUtils.writeBytesToFileNio(bytes, FileUtils.makeTimeDir(inBox) + "\\" + file.getName());
+                    ByteUtils.writeBytesToFileNio(bytes, DirUtils.makeTimeDir(inBox) + "\\" + file.getName());
                     file.delete();
                     break;
                 }
